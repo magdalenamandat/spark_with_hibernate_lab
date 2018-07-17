@@ -90,35 +90,34 @@ public class EngineersController {
 
         },new VelocityTemplateEngine());
 //
-//        post("/managers/:id", (req, res) -> {
-//            Manager manager = new Manager();
-//
-//            manager.setId(Integer.parseInt(req.params(":id")));
-//            manager.setFirstName(req.queryParams("first-name"));
-//            manager.setLastName(req.queryParams("last-name"));
-//            manager.setSalary(Integer.parseInt(req.queryParams("salary")));
-//            manager.setBudget(Double.parseDouble(req.queryParams("budget")));
-//
-//            int departmentId = Integer.parseInt(req.queryParams("department"));
-//            Department department = DBHelper.find(departmentId, Department.class);
-//            manager.setDepartment(department);
-//
-//            DBHelper.save(manager);
-//            res.redirect("/managers");
-//            return null;
-//        }, new VelocityTemplateEngine());
-//
-//        post ("/managers/:id/delete", (req, res) -> {
-//
-//            int managerId = Integer.parseInt(req.params(":id"));
-//
-//            Manager manager = DBHelper.find(managerId, Manager.class);
-//
-//            DBHelper.delete(manager);
-//
-//            res.redirect("/managers");
-//            return null;
-//        }, new VelocityTemplateEngine());
-//
+        post("/engineers/:id", (req, res) -> {
+            Engineer engineer = new Engineer();
+
+            engineer.setId(Integer.parseInt(req.params(":id")));
+            engineer.setFirstName(req.queryParams("first-name"));
+            engineer.setLastName(req.queryParams("last-name"));
+            engineer.setSalary(Integer.parseInt(req.queryParams("salary")));
+
+            int departmentId = Integer.parseInt(req.queryParams("department"));
+            Department department = DBHelper.find(departmentId, Department.class);
+            engineer.setDepartment(department);
+
+            DBHelper.save(engineer);
+            res.redirect("/engineers");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post ("/engineers/:id/delete", (req, res) -> {
+
+            int engineerId = Integer.parseInt(req.params(":id"));
+
+            Engineer engineer = DBHelper.find(engineerId, Engineer.class);
+
+            DBHelper.delete(engineer);
+
+            res.redirect("/engineers");
+            return null;
+        }, new VelocityTemplateEngine());
+
    }
 }
