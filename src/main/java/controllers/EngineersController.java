@@ -32,13 +32,13 @@ public class EngineersController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-//        get("/managers/new", (req, res) -> {
-//            HashMap<String, Object> model = new HashMap<>();
-//            List<Department> departments = DBHelper.getAll(Department.class);
-//            model.put("departments", departments);
-//            model.put("template", "templates/managers/create.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, new VelocityTemplateEngine());
+        get("/engineers/new", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            List<Department> departments = DBHelper.getAll(Department.class);
+            model.put("departments", departments);
+            model.put("template", "templates/engineers/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 //
 //        post("/managers", (req, res) -> {
 //
