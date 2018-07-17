@@ -20,6 +20,8 @@ public class EmployeesController {
 
         ManagersController managersController = new ManagersController();
 
+        DepartmentsController departmentsController = new DepartmentsController();
+
         get("/employees", (req, res) -> {
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/employees/index.vtl");
