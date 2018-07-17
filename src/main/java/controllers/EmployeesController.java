@@ -22,6 +22,9 @@ public class EmployeesController {
 
         DepartmentsController departmentsController = new DepartmentsController();
 
+        EngineersController engineersController = new EngineersController();
+
+
         get("/employees", (req, res) -> {
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/employees/index.vtl");
