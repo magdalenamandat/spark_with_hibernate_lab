@@ -63,6 +63,17 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
+        get("/managers/:id", (req, res) -> {
+
+            Map<String, Object> model = new HashMap();
+
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
+            model.put("template", "templates/managers/show.vtl");
+            model.put("manager", manager);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
 
         get("/managers/:id/edit", (req, res) -> {
             int managerId = Integer.parseInt(req.params(":id"));
@@ -94,6 +105,18 @@ public class ManagersController {
             manager.setDepartment(department);
 
             DBHelper.save(manager);
+            res.redirect("/managers");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post ("/managers/:id/delete", (req, res) -> {
+
+            int managerId = Integer.parseInt(req.params(":id"));
+
+            Manager manager = DBHelper.find(managerId, Manager.class);
+
+            DBHelper.delete(manager);
+
             res.redirect("/managers");
             return null;
         }, new VelocityTemplateEngine());
