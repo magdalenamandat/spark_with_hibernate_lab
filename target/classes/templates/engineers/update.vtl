@@ -1,0 +1,22 @@
+<h1>Edit Engineer</h1>
+
+<form action="/engineers/$engineer.getId()" method="post">
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" name="first-name" required value="$engineer.getFirstName()">
+
+
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" name="last-name" required value="$engineer.getLastName()">
+
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" name="salary" required class="inputbox" value=$engineer.getSalary()>
+
+    <label for="department">Department:</label>
+    <select name="department" id="department">
+        #foreach ($department in $departments)
+        <option value=$department.getId()>$department.getTitle()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Edit Engineer">
+</form>

@@ -24,7 +24,7 @@ public class Runner {
         Engineer engineer2 = new Engineer("Stewie", "Griffin", 27000, department1);
         DBHelper.save(engineer2);
 
-        Engineer found = DBHelper.find(engineer1.getId(), Engineer.class);
+        Engineer foundEngineer = DBHelper.find(engineer1.getId(), Engineer.class);
         Manager foundManager = DBHelper.findManagerForDept(department1);
     }
 }
